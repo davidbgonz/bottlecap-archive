@@ -6,3 +6,22 @@ body {
 a {
   color: #00B7FF;
 }
+
+#pinContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-perspective: 1000;
+            perspective: 1000;
+}
+
+#slideContainer {
+    width: 400%;
+    height: 100%;
+}
+
+.panel {
+    height: 100%;
+    width: 25%;
+    float: left;
+}
