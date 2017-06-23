@@ -4,9 +4,15 @@ block content
     h1= title
     p Welcome to #{title}
 
-    div(id='pinContainer')
-        div(id='slideContainer')
+    div(id='fullpage')
+        div(id='slideContainer' class='section')
             each val in colors
-                section(class='panel')
+                section(class='slide')
                     h2= val
-    script(src='/javascripts/colorScroll.js')
+    
+    script.
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                controlArrows: false
+            });
+        });
