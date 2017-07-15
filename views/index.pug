@@ -6,10 +6,13 @@ block content
 
     div(id='fullpage')
         div(id='slideContainer' class='section')
+            //- mixin section.slide
+            //-     h2=capColor
+            //-     img(src='/images/' + capColor.toLowerCase() + '/' + capColor.toLowerCase() + imgNum + '.jpg')
             each val in colors
                 section(class='slide')
-                    h2= val
-    
+                    h2=val.color
+                    //- img(src='/images/' + val.toLowerCase() + '/' + val.toLowerCase() + imgNum + '.jpg')
     script.
         $(document).ready(function() {
             $('#fullpage').fullpage({
