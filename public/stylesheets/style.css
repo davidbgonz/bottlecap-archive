@@ -7,3 +7,19 @@ a {
   color: #00B7FF;
 }
 
+h2 {
+  text-transform: capitalize;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.imgLoader {
+  height: 90%;
+  width: 100%;
+  overflow: auto;
+  position: fixed;
+  bottom: 0px;
+}
