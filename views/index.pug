@@ -10,12 +10,57 @@ block content
             //-     h2=capColor
             //-     img(src='/images/' + capColor.toLowerCase() + '/' + capColor.toLowerCase() + imgNum + '.jpg')
             each val in colors
-                section(class='slide')
+                section(class='slide' class=val.color)
                     h2=val.color
-                    //- img(src='/images/' + val.toLowerCase() + '/' + val.toLowerCase() + imgNum + '.jpg')
+                    div.imgLoader
+                        //- - for(var i = 1; i < val.size; i++)
+                        //-     img.post(data-src='/images/' + val.color + '/' + val.color + i + '.jpg')
+                            
     script.
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                controlArrows: false
+                controlArrows: false,
+                verticalCentered: false,
+                loopHorizontal: false,
+                afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {
+                    loadSetImages();
+                }
+                //- scrollOverflow: true
             });
+            
+            console.log('colors');
+
+            var imageLoader = document.querySelector('.active > .imgLoader');
+
+            var nextImg = 1;
+            function loadSetImages() {
+                let currentColor = document.querySelector('.active > h2').innerHTML;
+                imageLoader = document.querySelector('.active > .imgLoader');
+                for (var i = 0; i < 8; i++) {
+                    var image = document.createElement('img');
+                    image.src = '/images/' + currentColor + '/' + currentColor + '1' + '.jpg';
+                    nextImg++;
+                    //- var test = document.createElement('p');
+                    //- test.innerHTML = '#{colors[0].color}';
+                    //- test.innerHTML = currentColor;
+                    imageLoader.appendChild(image);
+                    //- imageLoader.appendChild(test);
+                }
+            };
+
+            // Detect when scrolled to bottom
+            imageLoader.addEventListener('scroll', function() {
+                if (imageLoader.scrollTop + imageLoader.clientHeight >= imageLoader.scrollHeight) {
+                    loadSetImages();
+                }
+            });
+
+            // Populate initial images
+            loadSetImages();
+
+            //- var imgLoader = new InfiniteScroll('.imgLoader', {
+            //-     path: undefined,
+            //-     elementScroll: true
+            //- });
+            
         });
